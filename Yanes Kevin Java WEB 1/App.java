@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class App{
   
- public static Scanner seleccion = new Scanner (System.in);
+
 public static void main(String[] args) {  
   
   
@@ -13,52 +13,48 @@ public static void main(String[] args) {
   
   do{
 
-    
-   
     System.out.println("");
     System.out.println ("a)Randomizar contactos");
     System.out.println("");
     System.out.println ("b)Poner datos de un contacto");
     System.out.println("");
-
-
+    System.out.println ("c)Salir");
+    System.out.println("");
+    if(opcion!="c"){
       
-      opcion = seleccion.nextLine();
-      
     
-  
-    
+    Scanner seleccion = new Scanner (System.in);
 
-    
-    
 
+    opcion = seleccion.nextLine();
+    
+    /*if(seleccion.hasNextLine()){
+
+     
+
+    }
+    */
 
   switch(opcion){
-   
     
-    
-    case "a":
-    System.out.println ("Elegir el numero de contactos");
-    
-
-    Scanner reader = new Scanner (System.in);
-    int x;
-    x = reader.nextInt();
   
-    
-    
+    case "a":
+    System.out.println("");
+    System.out.println ("Elegir el numero de contactos");
+    Scanner s = new Scanner(System.in);
+    int x;
+
+
+    x = s.nextInt();
+    s.nextLine();
     Contactos contacto[] = new Contactos[x];
 
+
+
     for(int i = 0 ; i<contacto.length ; i++){
-
       
-
       contacto[i] = ContactosRandom.generarContacto();
 
-      System.out.println("");
-      System.out.println ("El nombre es: \"" + contacto[i].getNombre() +"\"");
-      System.out.println("");
-  
       System.out.println("");
       System.out.println ("El apellido es: \"" + contacto[i].getApellido() +"\"");
       System.out.println("");
@@ -78,18 +74,24 @@ public static void main(String[] args) {
 
       guardarContacto.guardar(contacto[i] , i);
       
+
+      
+    
+      
     }
 
-    reader.close();
+    System.out.println("");
+    ConsultarContactos.mostrarEnPantalla(contacto);
+    System.out.println("");
 
     break;
 
     
 
     case "b":
-
-       System.out.println("Usted va a rellenar los datos de 1 contacto:");
-
+    System.out.println("");
+    System.out.println("Usted va a rellenar los datos de 1 contacto:");
+    System.out.println("");
     System.out.println("Introduzca nombre:");
          
   
@@ -131,8 +133,8 @@ public static void main(String[] args) {
     
     
     do{
-    
-    respuesta = seleccion.nextLine();
+      Scanner h = new Scanner(System.in);
+      respuesta = h.nextLine();
     
     
     switch(respuesta){
@@ -179,6 +181,8 @@ public static void main(String[] args) {
       
       guardarContacto.guardar(c1 , 1);
       
+  
+
       break;
       
       
@@ -204,31 +208,32 @@ public static void main(String[] args) {
       break;
       
       }
-
-      
       
     }while(!respuesta.equals("salir"));
-
+    
+   
+    
     break;
 
     default:
     System.out.println ("Nos vemos");
     break;
 
+    
   }
 
-  
-
-  
   seleccion.close();
-  
+  return;
 
+  }
+  
   }while(opcion!="c");
   
   
   
- }
+  }
 
+ 
  
  
 }

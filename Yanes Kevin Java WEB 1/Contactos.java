@@ -52,7 +52,7 @@ public String getNombre(){
   
   public String toString(){
     
-    return "El nombre es " + nombre;
+    return nombre;
     
   }
   
